@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>디데이</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@800&family=Sunflower:wght@300&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Maven Pro', sans-serif;
+            background-color: #e6e6e6;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #testDday {
+            font-weight: 800;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        #testDdayTime {
+            font-family: 'Sunflower', sans-serif;
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="testDday">📑Midterm</div>
+    <div id="testDdayTime"></div>
+
+    <script>
+        function calculateDday(targetDate) {
+            const now = new Date();
+            const eventDate = new Date(targetDate);
+            const currentTime = now.getTime();
+            const eventTime = eventDate.getTime();
+
+            const remainingTime = eventTime - currentTime;
+
+            const secondsInTotal = Math.floor(remainingTime / 1000);
+            const minutesInTotal = Math.floor(secondsInTotal / 60);
+            const hoursInTotal = Math.floor(minutesInTotal / 60);
+            const daysInTotal = Math.floor(hoursInTotal / 24);
+            const weeksInTotal = Math.floor(daysInTotal / 7);
+            const monthsInTotal = Math.floor(weeksInTotal / 4);
+
+            const seconds = secondsInTotal % 60;
+            const minutes = minutesInTotal % 60;
+            const hours = hoursInTotal % 24;
+            const days = daysInTotal % 7;
+            const weeks = weeksInTotal % 4;
+
+            return {
+                months: monthsInTotal,
+                weeks: weeks,
+                days: days,
+                hours: hours,
+                minutes: minutes,
+                seconds: seconds
+            };
+        }
+
+        function updateDday() {
+            const testDate = calculateDday("2023-10-20T00:00:00");
+            document.getElementById("testDdayTime").innerHTML = `${testDate.months}m ${testDate.weeks}w ${testDate.days}d ${testDate.hours}h ${testDate.minutes}m ${testDate.seconds}s ago`;
+        }
+
+        setInterval(updateDday, 1000);
+    </script>
+</body>
+
+</html>
