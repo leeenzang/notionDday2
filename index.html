@@ -50,18 +50,13 @@
             const minutesInTotal = Math.floor(secondsInTotal / 60);
             const hoursInTotal = Math.floor(minutesInTotal / 60);
             const daysInTotal = Math.floor(hoursInTotal / 24);
-            const weeksInTotal = Math.floor(daysInTotal / 7);
-            const monthsInTotal = Math.floor(weeksInTotal / 4);
 
             const seconds = secondsInTotal % 60;
             const minutes = minutesInTotal % 60;
             const hours = hoursInTotal % 24;
-            const days = daysInTotal % 7;
-            const weeks = weeksInTotal % 4;
+            const days = daysInTotal;
 
             return {
-                months: monthsInTotal,
-                weeks: weeks,
                 days: days,
                 hours: hours,
                 minutes: minutes,
@@ -70,8 +65,8 @@
         }
 
         function updateDday() {
-            const testDate = calculateDday("2023-10-28T00:00:00");
-            document.getElementById("testDdayTime").innerHTML = `${testDate.months}m ${testDate.weeks}w ${testDate.days}d ${testDate.hours}h ${testDate.minutes}m ${testDate.seconds}s ago`;
+            const testDate = calculateDday("2023-10-20T00:00:00");
+            document.getElementById("testDdayTime").innerHTML = `${testDate.days}d ${testDate.hours}h ${testDate.minutes}m ${testDate.seconds}s ago`;
         }
 
         setInterval(updateDday, 1000);
