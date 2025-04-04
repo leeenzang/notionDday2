@@ -34,7 +34,7 @@
 </head>
 
 <body>
-    <div id="testDday"> 💻 정처기 실기 </div>
+    <div id="testDday"> 💻 이론 기간 </div>
     <div id="testDdayTime"></div>
 
     <script>
@@ -65,7 +65,7 @@
         }
 
         function updateDday() {
-            const testDate = calculateDday("2024-10-20T00:00:00");
+            const testDate = calculateDday("2025-06-12T00:00:00");
             document.getElementById("testDdayTime").innerHTML = `${testDate.days}d ${testDate.hours}h ${testDate.minutes}m ${testDate.seconds}s ago`;
         }
 
